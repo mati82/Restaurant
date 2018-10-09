@@ -1,0 +1,2 @@
+<?php
+//verifier la connection
