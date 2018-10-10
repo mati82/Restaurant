@@ -1,0 +1,51 @@
+<h2>Réservation d'une table</h2>
+
+<form action="<?= $requestUrl ?>/Booking" method="post" class="generic-form">
+  <fieldset>
+    <legend>Informations</legend>
+    <label>Date de réservation :</label>
+    <input type="hidden" name="currentUser" value="1">
+
+    <select name="day">
+      <?php for($i = 1; $i < 31; $i++): ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+      <?php endfor; ?>
+    </select>
+
+    <select name="month">
+      <option value="1">Janvier</option>
+      <option value="2">Février</option>
+      <option value="3">Mars</option>
+      <option value="4">Avril</option>
+      <option value="5">Mai</option>
+      <option value="6">Juin</option>
+      <option value="7">Juillet</option>
+      <option value="8">Août</option>
+      <option value="9">Septembre</option>
+      <option value="10">Octobre</option>
+      <option value="11">Novembre</option>
+      <option value="12">Décembre</option>
+    </select>
+
+    <select name="year">
+      <?php for($i = 2018; $i < 2025; $i++): ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+      <?php endfor; ?>
+    </select>
+
+    <input type="time" name="myTime">
+    <label>Nombre de couverts :</label>
+    <select name="numberBook" for="numberBook">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+    </select>
+  </fieldset>
+  <input type="submit" value="Réserver" class="button button-primary">
+  <input type="reset" value="Annuler" class="button button-cancel">
+</form>
