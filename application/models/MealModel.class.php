@@ -2,25 +2,25 @@
 
 class MealModel
 {
-  private $sql;
-  private $database;
-
-  public function __construct()
-  {
-    $this->sql = $sql;
-    $this->database = new Database();
-  }
 
   public function getAllMeal()
   {
-    $this->sql = 'SELECT Id, Name, Photo, Description, SalePrice FROM meal';
-    return $this->sql;
+    $database = new Database();
+    $sql = 'SELECT Id, Name, Photo, Description, SalePrice FROM meal';
+    return $database->queryOne($sql);
   }
 
   public function getOneMeal($idMeal)
   {
-    $this->sql = 'SELECT Id, Name, Photo, Description, SalePrice FROM meal WHERE Id = ' . $idMeal;
-    return $this->sql;
+    $database = new Database();
+    $sql = "SELECT Id, Name, Photo, Description, SalePrice FROM meal WHERE Id = " . $idMeal;
+    return $database->query($sql,[$idMeal]);
   }
 
+  public function getLastMeal()
+  {
+    $database = new Database();
+    $sql = 'SELECT MAX(Id) AS last_Id, Name, Photo, Description, SalePrice FROM meal';
+    return $database->executeSql($sql);
+  }
 }
