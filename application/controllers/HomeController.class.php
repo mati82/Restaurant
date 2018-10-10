@@ -2,8 +2,14 @@
 
 class HomeController
 {
-    public function httpGetMethod(Http $http, array $queryFields)
+    public function httpGetMethod(/*Http $http, array $queryFields*/)
     {
+
+         $model = new MealModel();
+         $mealObjects = $model->getAllMeal();
+         return ["mealObjects" => $mealObjects];
+
+
     	/*
     	 * Méthode appelée en cas de requête HTTP GET
     	 *

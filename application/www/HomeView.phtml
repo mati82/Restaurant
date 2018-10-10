@@ -6,6 +6,12 @@
 <table class="generic-table meal-list">
     <caption>Carte du restaurant</caption>
     <tbody>
-        <!-- Code HTML à écrire -->
+      <?php foreach($mealObjects as $mealObject): ?>
+        <tr>
+          <td><img <?php echo 'src="application/www/images/meals/' . $mealObject["Photo"] .'"' ?>  alt=""></td>
+          <td><h4><?= $mealObject["Name"] ?></h4><p><?= $mealObject["Description"] ?></p></td>
+          <td><h4><?= number_format($mealObject["SalePrice"], 2) ?> €</h4></td>
+        </tr>
+      <?php endforeach; ?>
     </tbody>
 </table>
