@@ -11,7 +11,7 @@ class UserForm extends Form
     $this->addFormField("userYear");
     $this->addFormField("userAddress");
     $this->addFormField("userCity");
-    $this->addFormField("userPostcode")
+    $this->addFormField("userPostcode");
     $this->addFormField("userPhone");
     $this->addFormField("userMail");
     $this->addFormField("userPassword");
