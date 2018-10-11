@@ -16,17 +16,21 @@ class BookingController
 
   public function httpPostMethod(Http $http, array $formFields)
   {
-      $dateToSave = [
-        $_POST["myDate"],
-        $_POST["myTime"],
-        $_POST["numberBook"],
-        $_POST["currentUser"]
-      ];
+      if(//user is connect)
+      {
+        $formFields["bookingCurrentUser"];
+        $formFields["bookingDay"];
+        $formFields["bookingMonth"];
+        $formFields["bookingYear"];
+        $formFields["bookingHour"];
+        $formFields["bookingMinute"];
+        $formFields["bookingNumber"];
 
-      $saveDate = new BookingModel();
-      $saveDate->requestSaveDate($dateToSave);
+        $saveDate = new BookingModel();
+        $saveDate->requestSaveDate($formFields);
 
-      $redirect = new Http();
-      // $redirect->redirectTo($requestUrl);
+        $redirect = new Http();
+        $redirect->redirectTo($requestUrl);
+      }
   }
 }

@@ -4,17 +4,20 @@
   <fieldset>
     <legend>Informations</legend>
     <label>Date de réservation :</label>
-    <input type="hidden" name="currentUser" value="1">
 
-    <select name="day">
-      <?php for($i = 1; $i < 31; $i++): ?>
+    <input type="hidden" name="bookingCurrentUser" value="1">
+
+    <select name="bookingDay">
+        <option value="">---Selectionnez un jour---</option>
+      <?php for($i = 1; $i < 32; $i++): ?>
         <option value="<?= $i ?>"><?= $i ?></option>
       <?php endfor; ?>
     </select>
 
-    <span>/<span>
+    <span> / <span>
 
-    <select name="month">
+    <select name="bookingMonth">
+      <option value="">---Selectionnez un mois---</option>
       <option value="1">Janvier</option>
       <option value="2">Février</option>
       <option value="3">Mars</option>
@@ -29,25 +32,38 @@
       <option value="12">Décembre</option>
     </select>
 
-    <span>/<span>
+    <span> / <span>
 
-    <select name="year">
+    <select name="bookingYear">
+      <option value="">---Selectionnez une année---</option>
       <?php for($i = 2018; $i < 2025; $i++): ?>
         <option value="<?= $i ?>"><?= $i ?></option>
       <?php endfor; ?>
     </select>
 
-    <input type="time" name="myTime">
+    <span> à <span>
+
+    <select name="bookingHour">
+      <option value="">---Selectionnez une heure---</option>
+      <?php for($i = 0; $i < 24; $i++): ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+      <?php endfor; ?>
+    </select>
+
+    <span>:<span>
+
+    <select name="bookingMinute">
+      <option value="">---Selectionnez les minutes---</option>
+      <?php for($i = 0; $i < 60; $i++): ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+      <?php endfor; ?>
+    </select>
+
     <label>Nombre de couverts :</label>
-    <select name="numberBook" for="numberBook">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
+    <select name="bookingNumber">
+      <?php for($i = 0; $i < 9; $i++): ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+      <?php endfor; ?>
     </select>
   </fieldset>
   <input type="submit" value="Réserver" class="button button-primary">
