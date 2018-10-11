@@ -8,7 +8,7 @@
     <tbody>
       <?php foreach($mealObjects as $mealObject): ?>
         <tr>
-          <td><img src=<?php echo $wwwUrl . '/images/meals/' . $mealObject["Photo"] ?>  alt=""></td>
+          <td><img src="<?= $wwwUrl ?>/images/meals/<?= $mealObject["Photo"] ?>"  alt=""></td>
           <td><h4><?= $mealObject["Name"] ?></h4><p><?= $mealObject["Description"] ?></p></td>
           <td><h4><?= number_format($mealObject["SalePrice"], 2) ?> €</h4></td>
         </tr>
