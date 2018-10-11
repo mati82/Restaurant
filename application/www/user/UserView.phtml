@@ -1,7 +1,7 @@
 <h2>Création d'un compte client</h2>
 
-<form method="post" action="<?= requestUrl ?>/User " enctype="multipart/form-data">
-    
+<form method="post" action="<?= $requestUrl ?>/User " enctype="multipart/form-data">
+
     <fieldset>
         <legend>Identité et coordonnées</legend>
         <input type="text"  placeholder="Votre Prénom" name="userFirstName">
@@ -35,7 +35,7 @@
 
         <select name="userYear">
             <option value="">---Selectionnez une année---</option>
-            <?php for($i = 2018; $i < 2025; $i++): ?>
+            <?php for($i = 1950; $i < 2018; $i++): ?>
             <option value="<?= $i ?>"><?= $i ?></option>
             <?php endfor; ?>
         </select>
@@ -44,7 +44,7 @@
         <input type="text" placeHolder="Ville" name="userCity">
         <input type="tel"  placeholder="Votre numéro de téléphone" name="userPhone">
 
-    </fieldset> 
+    </fieldset>
 
     <fieldset>
         <legend>Informations d'authentification</legend>

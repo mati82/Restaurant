@@ -1,4 +1,3 @@
-/***********************************UserModel.class.php *******************************************/
 <?php
 class UserModel
 {
@@ -149,6 +148,7 @@ class UserModel
         // Ajout d'un message de notification qui s'affichera sur la page d'accueil.
         $flashBag = new FlashBag();
         $flashBag->add('Votre compte utilisateur a bien été créé.');
+        
     }
 
     public function updateLoginTimestamp($userId)
