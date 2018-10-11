@@ -16,7 +16,7 @@ class BookingController
 
   public function httpPostMethod(Http $http, array $formFields)
   {
-      if(//user is connect)
+      if(/*user is connect*/true)
       {
         $formFields["bookingCurrentUser"];
         $formFields["bookingDay"];
