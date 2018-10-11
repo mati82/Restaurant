@@ -1,0 +1,57 @@
+<h2>Création d'un compte client</h2>
+
+<form method="post" action="<?= requestUrl ?>/User " enctype="multipart/form-data">
+    
+    <fieldset>
+        <legend>Identité et coordonnées</legend>
+        <input type="text"  placeholder="Votre Prénom" name="userFirstName">
+        <input type="text"  placeholder="Votre Nom de Famille" name="userLastName">
+        <select name="userDay">
+        <option value="">---Selectionnez un jour---</option>
+        <?php for($i = 1; $i < 32; $i++): ?>
+        <option value="<?= $i ?>"><?= $i ?></option>
+        <?php endfor; ?>
+        </select>
+
+        <span> / <span>
+
+        <select name="userMonth">
+            <option value="">---Selectionnez un mois---</option>
+            <option value="1">Janvier</option>
+            <option value="2">Février</option>
+            <option value="3">Mars</option>
+            <option value="4">Avril</option>
+            <option value="5">Mai</option>
+            <option value="6">Juin</option>
+            <option value="7">Juillet</option>
+            <option value="8">Août</option>
+            <option value="9">Septembre</option>
+            <option value="10">Octobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Décembre</option>
+        </select>
+
+        <span> / <span>
+
+        <select name="userYear">
+            <option value="">---Selectionnez une année---</option>
+            <?php for($i = 2018; $i < 2025; $i++): ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+            <?php endfor; ?>
+        </select>
+        <textarea row="10" cols="50"  placeholder="Votre adresse" name="userAddress"></textarea>
+        <input type="text" placeholder="Code Postal" name="userPostcode" minlength="5">
+        <input type="text" placeHolder="Ville" name="userCity">
+        <input type="tel"  placeholder="Votre numéro de téléphone" name="userPhone">
+
+    </fieldset> 
+
+    <fieldset>
+        <legend>Informations d'authentification</legend>
+        <input type="mail" placeholder="Votre mail" name="userMail">
+        <input type="password"  placeholder="password" name="userPassword">
+    </fieldset>
+
+    <input type="submit">
+    <input type="reset">
+</form>
