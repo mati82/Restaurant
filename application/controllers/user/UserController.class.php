@@ -11,6 +11,8 @@ class UserController
   public function httpPostMethod(Http $http, array $formFields)
   {
     try {
+
+
       $userModel = new UserModel();
       $userModel->signUp(
         $formFields["userLastName"],
@@ -26,10 +28,19 @@ class UserController
         $formFields["userPhone"]
       );
 
+      foreach($formFields as $value)
+      {
+        if (empty($value)) {
+          throw new Exception("Un champ est vide.");
+        }
+      }
+
+
+
       $http->redirectTo('/');
 
-    } catch (\Exception $e) {
-      echo "Ahahah";
+    } catch (Exception $e) {
+      echo 'Exception reçue : ',  $e->getMessage(), "\n";
     }
 
 
