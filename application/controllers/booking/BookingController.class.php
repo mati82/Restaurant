@@ -15,25 +15,28 @@ class BookingController
 
   public function httpPostMethod(Http $http, array $formFields)
   {
-      if ($userSession->isAuthenticated() == true)
-      {
-        $formFields["bookingCurrentUser"];
-        $formFields["bookingDay"];
-        $formFields["bookingMonth"];
-        $formFields["bookingYear"];
-        $formFields["bookingHour"];
-        $formFields["bookingMinute"];
-        $formFields["bookingNumber"];
+    $userSession = new UserSession();
+    if ($userSession->isAuthenticated() == true)
+    {
+      $groupFormFields = array(
+        $formFields["bookingYear"] . "-" .
+        $formFields["bookingMonth"] . "-" .
+        $formFields["bookingDay"],
+        $formFields["bookingHour"] . ":" .
+        $formFields["bookingMinute"],
+        $formFields["bookingNumber"],
+        $formFields["bookingCurrentUser"],
+      ); // j'en suis là à gérer la fonction pour sauvegarder
 
-        $saveDate = new BookingModel();
-        $saveDate->requestSaveDate($formFields);
+      $saveDate = new BookingModel();
+      $saveDate->requestSaveDate($groupFormFields);
 
-        $redirect = new Http();
-        $redirect->redirectTo($requestUrl);
-      }
-      else
-      {
-        $http->redirectTo('/user/Login');
-      }
+
+      $http->redirectTo("/Booking");
+    }
+    else
+    {
+      $http->redirectTo("/user/Login");
+    }
   }
 }
