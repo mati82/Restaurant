@@ -34,9 +34,22 @@
 <!-- Interface utilisateur -->
 <nav class="user-interface">
     <ul class="link-list">
-      <a type="input" href="<?= $requestUrl ?>/User" class="button button-primary">Créer un compte</a>
+
+      <?php $userSession = new UserSession(); ?>
+      <?php if($userSession->isAuthentificated() == true): ?>
+
       <a type="input" href="<?= $requestUrl ?>/Booking" class="button button-primary">Réserver</a>
       <a type="input" href="<?= $requestUrl ?>/Order" class="button button-primary">Commander</a>
+      <div>Bonjour <?= $userSession->getFullName() ?></div>
+      <a type="input" href="<?= $requestUrl ?>/Logout" class="button button-primary">Déconnexion</a>
+
+    <?php else: ?>
+
+      <a type="input" href="<?= $requestUrl ?>/User" class="button button-primary">Créer un compte</a>
+      <a type="input" href="<?= $requestUrl ?>/Login" class="button button-primary">Connexion</a>
+
+    <?php endif ?>
+
     </ul>
 </nav>
 

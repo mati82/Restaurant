@@ -7,7 +7,7 @@ class UserSession
         if (session_status() === PHP_SESSION_NONE)
         {
         // démarrage du module
-        session_start();    
+        session_start();
         }
     }
 
@@ -18,16 +18,16 @@ class UserSession
             "email" => $email,
             "firstName" => $firstName,
             "lastName" => $lastName,
-            "userId" => $userId  
+            "userId" => $userId
         );
     }
-    
+
     public function destroy()
     {
         session_unset($_SESSION["user"]);
         session_destroy();
     }
-    
+
     public function isAuthenticated()
     {
     //verif si la clés du user existe on retourn ou vrai ou faux
@@ -40,49 +40,49 @@ class UserSession
         }
         return false;
     }
-    
+
     public function getEmail()
     {
-        
-        if (IsAuthenticated() == true) 
+
+        if (IsAuthenticated() == true)
         {
-            return $_SESSION['user']['email'];
+            return $_SESSION["user"]["email"];
         }
         return null;
     }
-    
+
     public function getLastName()
     {
-        if (IsAuthenticated() == true) 
+        if (IsAuthenticated() == true)
         {
-            return $_SESSION['user']['lastName'];
+            return $_SESSION["user"]["lastName"];
         }
         return null;
     }
-    
+
     public function getFirstName()
     {
-        if (IsAuthenticated() == true) 
+        if (IsAuthenticated() == true)
         {
-            return $_SESSION['user']['firstName'];
+            return $_SESSION["user"]["firstName"];
         }
         return null;
     }
-    
+
     public function getFullName()
     {
-        if (IsAuthenticated() == true) 
+        if (IsAuthenticated() == true)
         {
-            return $_SESSION['user']['firstName'] . " " . $_SESSION['user']['lastName'];
+            return $_SESSION["user"]["firstName"] . " " . $_SESSION["user"]["lastName"];
         }
         return null;
     }
-    
+
     public function getUserId()
     {
-        if (IsAuthenticated() == true) 
+        if (IsAuthenticated() == true)
         {
-            return $_SESSION['user']['userId'];
+            return $_SESSION["user"]["userId"];
         }
         return null;
     }
