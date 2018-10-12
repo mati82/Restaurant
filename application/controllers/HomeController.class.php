@@ -9,7 +9,8 @@ class HomeController
        $model = new MealModel();
        $mealObjects = $model->getAllMeal();
        return ["mealObjects" => $mealObjects];
-
+        
+       
     	/*
     	 * Méthode appelée en cas de requête HTTP GET
     	 *
