@@ -16,11 +16,11 @@ class LoginController
         $formFields["loginEmail"],
         $formFields["loginPwd"]
       );
-      
+
     $newSession = new UserSession();
-    $newSession->create($user["Email"],$user["FirstName"],$user["LastName",$user["Id"]);
-    
-    
+    $newSession->create($user["Email"],$user["FirstName"],$user["LastName"],$user["Id"]);
+
+
     $http->redirectTo('/');
 
   }

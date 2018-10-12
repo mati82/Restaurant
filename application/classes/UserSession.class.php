@@ -31,20 +31,20 @@ class UserSession
     public function isAuthenticated()
     {
     //verif si la clés du user existe on retourn ou vrai ou faux
-        if (array_key_exist("user", $_SESSION) == true)
+        if (array_key_exists("user", $_SESSION) == true)
         {
             if(empty($_SESSION["user"]) == false)
             {
                 return true;
             }
+            return false;
         }
-        return false;
     }
 
     public function getEmail()
     {
 
-        if (IsAuthenticated() == true)
+        if ($this->isAuthenticated() == true)
         {
             return $_SESSION["user"]["email"];
         }
@@ -53,7 +53,7 @@ class UserSession
 
     public function getLastName()
     {
-        if (IsAuthenticated() == true)
+        if ($this->isAuthenticated() == true)
         {
             return $_SESSION["user"]["lastName"];
         }
@@ -62,7 +62,7 @@ class UserSession
 
     public function getFirstName()
     {
-        if (IsAuthenticated() == true)
+        if ($this->isAuthenticated() == true)
         {
             return $_SESSION["user"]["firstName"];
         }
@@ -71,7 +71,7 @@ class UserSession
 
     public function getFullName()
     {
-        if (IsAuthenticated() == true)
+        if ($this->isAuthenticated() == true)
         {
             return $_SESSION["user"]["firstName"] . " " . $_SESSION["user"]["lastName"];
         }
@@ -80,7 +80,7 @@ class UserSession
 
     public function getUserId()
     {
-        if (IsAuthenticated() == true)
+        if ($this->isAuthenticated() == true)
         {
             return $_SESSION["user"]["userId"];
         }
