@@ -12,10 +12,14 @@ class LoginController
   public function httpPostMethod(Http $http, array $formFields)
   {
       $userModel = new UserModel();
-      $userModel->findWithEmailPassword(
+      $user = $userModel->findWithEmailPassword(
         $formFields["loginEmail"],
         $formFields["loginPwd"]
       );
+      
+    $newSession = new UserSession();
+    $newSession->create($user["Email"],$user["FirstName"],$user["LastName",$user["Id"]);
+    
     
     $http->redirectTo('/');
 
