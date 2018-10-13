@@ -2,10 +2,11 @@
 
 class BookingModel
 {
-  public function requestSaveDate($date, $time, $seat, $userId)
+  public function requestSaveDate($saveDate)
   {
     $database = new Database();
-    $sql = 'INSERT INTO booking (BookingDate, BookingTime, NumberOfSeats, User_Id) VALUES (?, ?, ?, ?)';
-    return $database->executeSql($sql, [$date, $time, $seat, $userId]);
+    $sql = 'INSERT INTO booking (BookingDate, BookingTime, NumberOfSeats, User_Id, CreationTimestamp)
+    VALUES (?, ?, ?, ?, NOW())';
+    return $database->executeSql($sql, $saveDate);
   }
 }

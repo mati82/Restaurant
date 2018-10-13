@@ -19,17 +19,21 @@ class BookingController
     if ($userSession->isAuthenticated() == true)
     {
       $groupFormFields = array(
-        $formFields["bookingYear"] . "-" .
-        $formFields["bookingMonth"] . "-" .
-        $formFields["bookingDay"],
-        $formFields["bookingHour"] . ":" .
-        $formFields["bookingMinute"],
-        $formFields["bookingNumber"],
-        $formFields["bookingCurrentUser"],
-      ); // j'en suis là à gérer la fonction pour sauvegarder
+        "bookingDate" => $formFields["bookingYear"] . "-" . $formFields["bookingMonth"] . "-" . $formFields["bookingDay"],
+        "bookingTime" => $formFields["bookingHour"] . ":" . $formFields["bookingMinute"] . ":00",
+        "bookingSeat" => $formFields["bookingSeat"],
+        "bookingCurrentUser" => $formFields["bookingCurrentUser"],
+      );
+
 
       $saveDate = new BookingModel();
-      $saveDate->requestSaveDate($groupFormFields);
+      $saveDate->requestSaveDate(array(
+          $groupFormFields["bookingDate"],
+          $groupFormFields["bookingTime"],
+          $groupFormFields["bookingSeat"],
+          $groupFormFields["bookingCurrentUser"]
+        )
+      );
 
 
       $http->redirectTo("/Booking");

@@ -5,7 +5,7 @@
     <legend>Informations</legend>
     <label>Date de réservation :</label>
 
-    <input type="hidden" name="bookingCurrentUser" value="13">
+    <input type="hidden" name="bookingCurrentUser" value="24">
 
     <select name="bookingDay">
         <option value="">---Selectionnez un jour---</option>
@@ -18,15 +18,15 @@
 
     <select name="bookingMonth">
       <option value="">---Selectionnez un mois---</option>
-      <option value="1">Janvier</option>
-      <option value="2">Février</option>
-      <option value="3">Mars</option>
-      <option value="4">Avril</option>
-      <option value="5">Mai</option>
-      <option value="6">Juin</option>
-      <option value="7">Juillet</option>
-      <option value="8">Août</option>
-      <option value="9">Septembre</option>
+      <option value="01">Janvier</option>
+      <option value="02">Février</option>
+      <option value="03">Mars</option>
+      <option value="04">Avril</option>
+      <option value="05">Mai</option>
+      <option value="06">Juin</option>
+      <option value="07">Juillet</option>
+      <option value="08">Août</option>
+      <option value="09">Septembre</option>
       <option value="10">Octobre</option>
       <option value="11">Novembre</option>
       <option value="12">Décembre</option>
@@ -45,7 +45,10 @@
 
     <select name="bookingHour">
       <option value="">---Selectionnez une heure---</option>
-      <?php for($i = 0; $i < 24; $i++): ?>
+      <?php for($i = 0; $i < 10; $i++): ?>
+        <option value="0<?= $i ?>">0<?= $i ?></option>
+      <?php endfor; ?>
+      <?php for($i = 10; $i < 24; $i++): ?>
         <option value="<?= $i ?>"><?= $i ?></option>
       <?php endfor; ?>
     </select>
@@ -54,13 +57,16 @@
 
     <select name="bookingMinute">
       <option value="">---Selectionnez les minutes---</option>
-      <?php for($i = 0; $i < 60; $i++): ?>
+      <?php for($i = 0; $i < 10; $i++): ?>
+        <option value="0<?= $i ?>">0<?= $i ?></option>
+      <?php endfor; ?>
+      <?php for($i = 10; $i < 60; $i++): ?>
         <option value="<?= $i ?>"><?= $i ?></option>
       <?php endfor; ?>
     </select>
 
     <label>Nombre de couverts :</label>
-    <select name="bookingNumber">
+    <select name="bookingSeat">
       <?php for($i = 0; $i < 9; $i++): ?>
         <option value="<?= $i ?>"><?= $i ?></option>
       <?php endfor; ?>
