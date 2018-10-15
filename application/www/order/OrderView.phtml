@@ -1,17 +1,37 @@
 <h2>Passer une commande</h2>
 
-<form method="" action="/Order">
+<form method="" action="/Order" id="order-form">
   <fieldset>
     <legend>Ajouter un article</legend>
     <label>Nom : </label>
     <select>
       <?php foreach ($mealObjects as $mealObject): ?>
 
-        <option value="<?= $mealObject["Id"] ?>"><?= $mealObject["Name"] ?></option>
+        <option class="meal" data-url="<?= $mealObject["Photo"] ?>" value="<?= $mealObject["Id"] ?>"><?= $mealObject["Name"] ?></option>
 
       <?php endforeach ?>
 
-      
-
     </select>
+
+    <div id="mealDetails">
+      <img src="" alt="">
+      <p></p>
+      <p class="mealPrice"></p>
+      <input type="hidden" value="">
+    </div>
+
+
+    <label>Quantité</label>
+    <input type="number">
   </fieldset>
+
+  <fieldset id="orderSummary">
+    <legend>Récapitulatif de la commande</legend>
+
+    <?php include ('BasketView.phtml')
+
+  </fieldset>
+
+</form>
+
+<script src="<?= $wwwUrl ?>/js/classes/OrderForm.class.js"></script>
