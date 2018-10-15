@@ -7,7 +7,7 @@
     <select>
       <?php foreach ($mealObjects as $mealObject): ?>
 
-        <option class="meal" data-url="<?= $mealObject["Photo"] ?>" value="<?= $mealObject["Id"] ?>"><?= $mealObject["Name"] ?></option>
+        <option class="meal" value="<?= $mealObject["Id"] ?>"><?= $mealObject["Name"] ?></option>
 
       <?php endforeach ?>
 
@@ -28,9 +28,12 @@
   <fieldset id="orderSummary">
     <legend>Récapitulatif de la commande</legend>
 
-    <?php include ('BasketView.phtml')
+    <div id="basketView"></div>
 
   </fieldset>
+
+  <input type="submit" value="Valider la commande" class="button primary-button">
+  <input type="reset" value="Annuler" class="button cancel-button">
 
 </form>
 
