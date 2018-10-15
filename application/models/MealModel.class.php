@@ -16,12 +16,4 @@ class MealModel
     $sql = "SELECT Id, Name, Photo, Description, SalePrice FROM meal WHERE Id = " . $idMeal;
     return $database->queryOne($sql,[$idMeal]);
   }
-
-  //Fonction pas nécessaire pour les Meal
-  // public function getLastMeal()
-  // {
-  //   $database = new Database();
-  //   $sql = 'SELECT MAX(Id) AS last_Id, Name, Photo, Description, SalePrice FROM meal';
-  //   return $database->executeSql($sql);
-  // }
 }

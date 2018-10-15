@@ -1,6 +1,4 @@
 <?php
-//gestion de la user session + inscription + messages d'erreurs
-
 class UserController
 {
   public function httpGetMethod(Http $http, array $queryFields)
@@ -10,9 +8,8 @@ class UserController
 
   public function httpPostMethod(Http $http, array $formFields)
   {
-    try {
-
-
+    try
+    {
       $userModel = new UserModel();
       $userModel->signUp(
         $formFields["userLastName"],
@@ -34,12 +31,11 @@ class UserController
           throw new Exception("Un champ est vide.");
         }
       }
-
-
-
       $http->redirectTo('/');
 
-    } catch (Exception $e) {
+    }
+    catch (Exception $e)
+    {
       echo 'Exception reçue : ',  $e->getMessage(), "\n";
     }
 
