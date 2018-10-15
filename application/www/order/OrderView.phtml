@@ -1,0 +1,17 @@
+<h2>Passer une commande</h2>
+
+<form method="" action="/Order">
+  <fieldset>
+    <legend>Ajouter un article</legend>
+    <label>Nom : </label>
+    <select>
+      <?php foreach ($mealObjects as $mealObject): ?>
+
+        <option value="<?= $mealObject["Id"] ?>"><?= $mealObject["Name"] ?></option>
+
+      <?php endforeach ?>
+
+      
+
+    </select>
+  </fieldset>

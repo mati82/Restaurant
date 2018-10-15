@@ -16,9 +16,4 @@ class LogoutController
       $http->redirectTo('/');
     }
   }
-
-  public function httpPostMethod(Http $http, array $formFields)
-  {
-
-  }
 }

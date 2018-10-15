@@ -6,7 +6,7 @@ class MealModel
   public function getAllMeal()
   {
     $database = new Database();
-    $sql = 'SELECT Id, Name, Photo, Description, SalePrice FROM meal';
+    $sql = 'SELECT * FROM meal';
     return $database->query($sql);
   }
 
