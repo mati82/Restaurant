@@ -5,7 +5,7 @@
     <legend>Informations</legend>
     <label>Date de réservation :</label>
 
-    <input type="hidden" name="bookingCurrentUser" value="24">
+    <input type="hidden" name="bookingCurrentUser" value="<?= $_SESSION['user']['userId'] ?>">
 
     <select name="bookingDay">
         <option value="">---Selectionnez un jour---</option>

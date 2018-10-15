@@ -9,7 +9,7 @@ class BookingController
     $userSession = new UserSession();
     if ($userSession->isAuthenticated() == false)
     {
-        $http->redirectTo('/user/Login');
+      $http->redirectTo('/user/Login');
     }
   }
 
