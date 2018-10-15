@@ -5,6 +5,7 @@ var OrderForm = function()
   this.$mealDetails = $('#mealDetails');
   this.$orderSummary = $('#orderSummary');
   this.$basketView = $('#basketView');
+  this.$validateOrder = $('#validateOrder');
 }
 
 OrderForm.prototype.onAjaxChangeMeal = function(meal)
@@ -44,6 +45,8 @@ OrderForm.prototype.onClickRemoveBasketItem = function(event)
 {
   var $button;
   var mealId;
+
+  $button = 
   //
   // Récupération de l'objet jQuery représentant le bouton de suppression sur
   //    lequel l'utilisateur a cliqué.
