@@ -68,7 +68,7 @@ function isInteger(value)
 // La fonction renvoie l'inverse de isNaN() de JavaScript
 function isNumber(value)
 {
-    return !isNan(value);
+    return !isNaN(value);
 }
 
 function loadDataFromDomStorage(name)

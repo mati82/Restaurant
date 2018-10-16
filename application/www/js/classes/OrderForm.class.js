@@ -5,7 +5,7 @@ var OrderForm = function()
   this.$mealDetails = $('#meal-details');
   this.$orderSummary = $('#order-summary');
   this.$validateOrder = $('#validate-order');
-}
+};
 
 OrderForm.prototype.onAjaxChangeMeal = function(meal)
 {
@@ -14,26 +14,26 @@ OrderForm.prototype.onAjaxChangeMeal = function(meal)
 
   //mise à jour de l'affichage
   this.$mealDetails.children('p').text(meal.Description);
-  this.$mealDetails.children('.mealPrice').text(meal.SalePrice);
-  this.$mealDetails.children('img').src = imageUrl;
-  this.$mealDetails.children('input').val = meal.SalePrice;
+  this.$mealDetails.find('strong').text(meal.SalePrice);
+  this.$mealDetails.children('img').attr("src", imageUrl);
+  this.$form.find('input[name=salePrice]').val(meal.SalePrice);
 };
 
 OrderForm.prototype.onAjaxRefreshOrderSummary = function(basketViewHtml)
 {
   //Insertion du contenu du panier (la vue en PHP) dans le document HTML.
-  this.$basketView.text(basketViewHtml);
+  this.$orderSummary.html(basketViewHtml);
 };
 
 OrderForm.prototype.onChangeMeal = function()
 {
-  var mealId;
-  mealId = this.$meal.val();
   //   Récupération de l'id de l'aliment sélectionné dans la liste déroulante.
   //
 	// Exécution d'une requête HTTP GET AJAJ (Asynchronous JavaScript And JSON)
   //    pour récupérer les informations de l'aliment sélectionné dans la liste déroulante.
   //
+  var mealId;
+  mealId = this.$meal.val();
    $.getJSON(
      getRequestUrl() + '/meal?id=' + mealId,
      this.onAjaxChangeMeal.bind(this)
@@ -63,7 +63,7 @@ OrderForm.prototype.onClickRemoveBasketItem = function(event)
   //   Il faut donc empêcher le comportement par défaut du navigateur.
   //
   //   event.preventDefault();
-}
+};
 
 OrderForm.prototype.refreshOrderSummary = function()
 {
@@ -85,7 +85,7 @@ OrderForm.prototype.refreshOrderSummary = function()
   //    Au retour de la réponse HTTP
   //
   //   )
-}
+};
 
 OrderForm.prototype.run = function()
 {
@@ -128,4 +128,4 @@ OrderForm.prototype.run = function()
  //
  //    Effacement du panier.
 
-}
+};
