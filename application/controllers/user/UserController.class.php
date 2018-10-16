@@ -38,9 +38,5 @@ class UserController
     {
       echo 'Exception reçue : ',  $e->getMessage(), "\n";
     }
-
-
-
-
   }
 }

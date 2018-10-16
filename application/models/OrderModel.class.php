@@ -20,11 +20,22 @@ class OrderModel
   public function validate($user, $basketItems)
   {
     // requete sql insertion de la commande dans la base de données
+    $database = new Database();
+    $sqlOrder = 'INSERT INTO order (User_Id, CreationTimeStamp, TaxRate) VALUES (?, NOW(), 20)';
+    $sqlOrderLine = 'INSERT INTO orderline (Order_Id, Meal_Id, QuantityOrdered, PriceEach) VALUES (?, ?, ?, ?)';
     // intialialisation du montant total HT
+    $TotalAmount = 0;
     // insertion des lignes de la commande
-    // Ajout du montant HT de la ligne du panier au montant tota HT
+    foreach{
+      totalAmount += $basketItems['quantity'] * $basketItems['salePrice']
+      // Ajout du montant HT de la ligne du panier au montant tota HT
+      $database->executeSql($sqlOrderLine, [$sqlOrder, $basketItems['Meal_Id'], $basketItems['QuantityOrdered'], $basketItems['SalePrice']]);
+    }
+
     // Insertion d'une ligne de la commande dans la base de données
+
     // Mise à jour de la commande dans la base de données, avaecd le montants
+
     // renvoyer l'id de l'order1
   }
 }

@@ -8,8 +8,8 @@ function runFormValidation(){
     var $form;
     var formValidator;
 
-    // $form = $(form:no([data-no-validation=true]));
-    //
+    $form = $(form:no([data-no-validation=true]));
+    
     // // Si il y a un formulaire à valider sur la page actuelle ?
     // 	Execution de la validation du form
 
