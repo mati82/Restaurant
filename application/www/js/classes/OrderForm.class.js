@@ -181,53 +181,50 @@ OrderForm.prototype.refreshOrderSummary = function()
   //    Exécution d'une requête HTTP POST AJAH (Asynchronous JavaScript And HTML)
   //   pour récupérer le contenu du panier sous la forme d'un document HTML.
   //
-   $post
+   $.post
    (
-       URL destination
-       Données HTTP POST
-       Au retour de la réponse HTTP
-   )
+    getRequestUrl() + '/basket',   //URL destination
+    formFields,   //Données HTTP POST
+    this.onAjaxRefreshOrderSummary.bind(this)   //Au retour de la réponse HTTP
+   );
 };
 
 OrderForm.prototype.run = function()
 {
 
-  $('#OrderForm option').addEventListener('click', onChangeMeal);
-
-  $('#OrderForm option').trigger('click');
-
  //  Installation d'un gestionnaire d'évènement sur la sélection d'un aliment
  //    *dans la liste déroulante des aliments.
- //
+    this.$meal.on('change', this.onChangeMeal.bind(this));
  // 	 Utilisation de la méthode jQuery trigger() pour déclencher dès maintenant
  //     *l'évènement de la liste déroulante afin d'afficher le premier aliment de la liste.
- //
+    this.$meal.trigger('change');
  // 	 Installation d'un gestionnaire d'évènement FUTUR sur le clic des boutons de
  //     * suppression d'un article du panier.
  //     *
  //     * A cet instant il n'y a pas de bouton puisque c'est refreshOrderSummary() qui
  //     * génère cette partie du document HTML. Il peut n'y avoir aucun bouton (panier
  //     * vide) comme il peut y en avoir une dizaine, un pour chaque article du panier.
- //
+    this.$orderSummary.on('click', 'button', this.onClickRemoveBasketItem.bind(this));
  //
  //
  //     Installation d'un gestionnaire d'évènement sur le clic du bouton de validation
  //     * de la commande.
- //
+    this.$validateOrder.on('click', this.onClickValidateOrder.bind(this));
  //     Installation d'un gestionnaire d'évènement sur la soumission du formulaire.
  //    //this.$form.on('submit', this.onSubmitForm.bind(this));
- //    this.$form.find('[type=submit]').on('click', this.onSubmitForm.bind(this));
+    this.$form.find('[type=submit]').on('click', this.onSubmitForm.bind(this));
  //
  //
  //     * Le formulaire est caché au démarrage (pour éviter le clignotement de la page),
  //     * il faut l'afficher.
- //
+    this.$form.fadeIn('slow');
  //     Affichage initial du récapitulatif de la commande.
+    this.refreshOrderSummary();
  //
- // }
+};
  //
-	// OrderForm.prototype.success = function(){
+OrderForm.prototype.success = function(){
  //
  //    Effacement du panier.
-
+    this.basketSession.clear();
 };
