@@ -1,19 +1,37 @@
 var BasketSession = function()
 {
-
-
+  this.items = null;
+  this.items.load();
 	// Charger le contenue du panier et l'instencier à zéro
-
-
 }
 
 BasketSession.prototype.add = function(mealId, name, quantity, salePrice)
 {
   var index;
 
+  mealId = parseInt(mealId);
+  quantity = parseInt(quantity);
+  salePrice = parseInt(salePrice);
+
   if(isInteger(mealId) == true)
   {
-    for(index = 0; )
+    for(index = 0; index < this.items.lenght; index++)
+    {
+      if(this.items[index] == mealId)
+      {
+        this.items.quantity += quantity;
+      }
+      else
+      {
+        this.items.push({
+            mealId : mealId,
+            name : name;
+            quantity : quantity,
+            salePrice : salePrice
+        });
+      }
+    }
+    this.save();
   }
 	 // var index;
    //
@@ -49,31 +67,35 @@ BasketSession.prototype.add = function(mealId, name, quantity, salePrice)
 
 BasketSession.prototype.clear = function()
 {
-
-
-
+  saveDataToDomStorage('basket', null);
 }
 
 
 BasketSession.prototype.isEmpty = function()
 {
-  return (empty(loadDataFromDomStorage(DOM_STORAGE_ITEM_NAME)));
+  return this.items.lenght == 0;
 
 }
 
 BasketSession.prototype.load = function()
 {
-
 	// Chargement du panier depuis le DOM storage.
-  loadDataFromDomStorage(DOM_STORAGE_ITEM_NAME);
-
+  return loadDataFromDomStorage('basket');
 }
 
 
 BasketSession.prototype.remove = function(mealId)
 {
-
-	  //   var index;
+	  var index;
+    for(index = 0; index < this.items.lenght; index++)
+    {
+      if(this.items[index] == mealId)
+      {
+        this.items.splice(mealId, 1);
+        return true;
+      }
+      return false;
+    }
     //
     // // Recherche de l'aliment spécifié.
     //
@@ -93,7 +115,6 @@ BasketSession.prototype.remove = function(mealId)
 
 BasketSession.prototype.save = function()
 {
-
     // Enregistrement du panier dans le DOM storage.
-    saveDataToDomStorage(DOM_STORAGE_ITEM_NAME, data)
+    saveDataToDomStorage('basket', this.items);
 }
