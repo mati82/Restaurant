@@ -119,14 +119,13 @@ OrderForm.prototype.onClickValidateOrder = function()
 OrderForm.prototype.onSubmitForm = function(event)
 {
     
-    /*  Le formulaire doit être validé par la classe FormValidator.
-     *
-     * Quand cette classe s'exécute elle enregistre combien d'erreurs de validation elle
-     * a trouvé dans un attribut HTML data-validation-error-count de la balise <form>
-     * (voir le code dans la méthode onSubmitForm() de la classe FormValidator).
-     *
-     * Si au moins une erreur est trouvée on ne veut surtout pas continuer !
-     if(......){
+    //  Le formulaire doit être validé par la classe FormValidator.
+    // Quand cette classe s'exécute elle enregistre combien d'erreurs de validation elle
+    // a trouvé dans un attribut HTML data-validation-error-count de la balise <form>
+    // (voir le code dans la méthode onSubmitForm() de la classe FormValidator).
+    //
+    // Si au moins une erreur est trouvée on ne veut surtout pas continuer !
+ /*    if(this.$form.data('validation-error-count'){
      
      On ne fait rien
      
@@ -182,12 +181,12 @@ OrderForm.prototype.refreshOrderSummary = function()
   //    Exécution d'une requête HTTP POST AJAH (Asynchronous JavaScript And HTML)
   //   pour récupérer le contenu du panier sous la forme d'un document HTML.
   //
-  //   $post(
-  //    URL destination
-  //    Données HTTP POST
-  //    Au retour de la réponse HTTP
-  //
-  //   )
+   $post
+   (
+       URL destination
+       Données HTTP POST
+       Au retour de la réponse HTTP
+   )
 };
 
 OrderForm.prototype.run = function()
