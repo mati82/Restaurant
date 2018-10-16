@@ -1,7 +1,6 @@
-const DOM_STORAGE_ITEM_NAME = 'basketItems';
-
 var BasketSession = function()
 {
+
 
 	// Charger le contenue du panier et l'instencier à zéro
 
@@ -10,7 +9,12 @@ var BasketSession = function()
 
 BasketSession.prototype.add = function(mealId, name, quantity, salePrice)
 {
+  var index;
 
+  if(isInteger(mealId) == true)
+  {
+    for(index = 0; )
+  }
 	 // var index;
    //
    //  // Conversion explicite des valeurs spécifiées en nombres.
@@ -46,7 +50,7 @@ BasketSession.prototype.add = function(mealId, name, quantity, salePrice)
 BasketSession.prototype.clear = function()
 {
 
-// Destruction du panier dans le DOM storage.
+
 
 }
 
