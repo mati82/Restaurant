@@ -82,7 +82,10 @@ OrderForm.prototype.refreshOrderSummary = function()
 
   // Préparation d'une requête HTTP POST, construction d'un objet représentant
   //    les données de formulaire.
-  //
+    formFields = 
+    {
+        basketItems : this.BasketSession.items
+    };
   //   Ainsi form.basketItems donnera du côté du serveur en PHP $formFields['basketItems']
   //
   //    Exécution d'une requête HTTP POST AJAH (Asynchronous JavaScript And HTML)
