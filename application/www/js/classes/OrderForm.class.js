@@ -22,7 +22,17 @@ OrderForm.prototype.onAjaxChangeMeal = function(meal)
 OrderForm.prototype.onAjaxRefreshOrderSummary = function(basketViewHtml)
 {
   //Insertion du contenu du panier (la vue en PHP) dans le document HTML.
-  this.$orderSummary.html(basketViewHtml);
+    this.$orderSummary.html(basketViewHtml);
+
+//verification du panier si il est vide le btn validation désactivé sinon il est actif: 
+    if(this.BasketSession.isEmpty() == true)
+    {
+        this.$validateOrder.attr('disabled', true);
+    }
+    else
+    {
+        this.$validateOrder.attr('disabled', false);
+    }
 };
 
 OrderForm.prototype.onChangeMeal = function()
@@ -45,24 +55,23 @@ OrderForm.prototype.onClickRemoveBasketItem = function(event)
   var $button;
   var mealId;
 
-  // $button =
-  //
   // Récupération de l'objet jQuery représentant le bouton de suppression sur
-  //    lequel l'utilisateur a cliqué.
-  //
+  //lequel l'utilisateur a cliqué.
+    $button = $(event.currentTarget);
+  
   //      Récupération du produit alimentaire relié au bouton.
-  //
+    mealId = $button.data('id');
   //      Suppression du produit alimentaire du panier.
-  //
+    this.BasketSession.remove(mealId);
   //      Mise à jour du récapitulatif de la commande.
-  //
-  //
-  //       Par défaut les navigateurs ont pour comportement d'envoyer le formulaire
+    this.refreshOrderSummary();
+  
+  //   Par défaut les navigateurs ont pour comportement d'envoyer le formulaire
   //   en requête HTTP à l'URL indiquée dans l'attribut action des balises <form>
   //
   //   Il faut donc empêcher le comportement par défaut du navigateur.
   //
-  //   event.preventDefault();
+    event.preventDefault();
 };
 
 OrderForm.prototype.refreshOrderSummary = function()
@@ -90,9 +99,9 @@ OrderForm.prototype.refreshOrderSummary = function()
 OrderForm.prototype.run = function()
 {
 
-  // $('#OrderForm option').addEventListener('click', onChangeMeal);
-  //
-  // $('#OrderForm option').trigger('click');
+  $('#OrderForm option').addEventListener('click', onChangeMeal);
+
+  $('#OrderForm option').trigger('click');
 
  //  Installation d'un gestionnaire d'évènement sur la sélection d'un aliment
  //    *dans la liste déroulante des aliments.
