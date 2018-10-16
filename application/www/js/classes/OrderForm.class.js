@@ -1,11 +1,10 @@
 var OrderForm = function()
 {
   this.$form = $('#order-form');
-  this.$meal = $('.meal');
-  this.$mealDetails = $('#mealDetails');
-  this.$orderSummary = $('#orderSummary');
-  this.$basketView = $('#basketView');
-  this.$validateOrder = $('#validateOrder');
+  this.$meal = $('#meal');
+  this.$mealDetails = $('#meal-details');
+  this.$orderSummary = $('#order-summary');
+  this.$validateOrder = $('#validate-order');
 }
 
 OrderForm.prototype.onAjaxChangeMeal = function(meal)
@@ -46,7 +45,7 @@ OrderForm.prototype.onClickRemoveBasketItem = function(event)
   var $button;
   var mealId;
 
-  $button = 
+  $button =
   //
   // Récupération de l'objet jQuery représentant le bouton de suppression sur
   //    lequel l'utilisateur a cliqué.
