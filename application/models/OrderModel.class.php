@@ -12,8 +12,8 @@ class OrderModel
   public function findOrderLine($idOrder)
   {
     $database = new Database();
-    $sql = 'SELECT QuantityOrder, Meal_Id, Name, PriceEach, Order_Id FROM Orderline WHERE Order_Id = ?
-    INNER JOIN Meal ON Meal.Id = Orderline.Meal_Id';
+    $sql = 'SELECT QuantityOrder, Meal_Id, Name, PriceEach, Order_Id FROM orderline WHERE Order_Id = ?
+    INNER JOIN meal ON Meal.Id = Orderline.Meal_Id';
     return $database->query($sql,[$idOrder]);
   }
 
@@ -25,6 +25,6 @@ class OrderModel
     // Ajout du montant HT de la ligne du panier au montant tota HT
     // Insertion d'une ligne de la commande dans la base de données
     // Mise à jour de la commande dans la base de données, avaecd le montants
-    // renvoyer l'id de l'order
+    // renvoyer l'id de l'order1
   }
 }

@@ -13,7 +13,7 @@
             <li>
                 <label for="meal">Nom :</label>
                 <select id="meal" name="meal">
-                    <?php foreach($meals as $meal): ?>
+                    <?php foreach($mealObjects as $meal): ?>
                         <option value="<?= $meal['Id'] ?>"><?= $meal['Name'] ?></option>
                     <?php endforeach; ?>
                 </select>

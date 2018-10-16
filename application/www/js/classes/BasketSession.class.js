@@ -1,3 +1,5 @@
+const DOM_STORAGE_ITEM_NAME = 'basketItems';
+
 var BasketSession = function()
 {
 
@@ -51,7 +53,7 @@ BasketSession.prototype.clear = function()
 
 BasketSession.prototype.isEmpty = function()
 {
-
+  return (empty(loadDataFromDomStorage(DOM_STORAGE_ITEM_NAME)));
 
 }
 
@@ -59,6 +61,7 @@ BasketSession.prototype.load = function()
 {
 
 	// Chargement du panier depuis le DOM storage.
+  loadDataFromDomStorage(DOM_STORAGE_ITEM_NAME);
 
 }
 
@@ -88,5 +91,5 @@ BasketSession.prototype.save = function()
 {
 
     // Enregistrement du panier dans le DOM storage.
-
+    saveDataToDomStorage(DOM_STORAGE_ITEM_NAME, data)
 }

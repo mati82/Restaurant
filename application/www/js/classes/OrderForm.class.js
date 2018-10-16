@@ -45,7 +45,7 @@ OrderForm.prototype.onClickRemoveBasketItem = function(event)
   var $button;
   var mealId;
 
-  $button =
+  // $button =
   //
   // Récupération de l'objet jQuery représentant le bouton de suppression sur
   //    lequel l'utilisateur a cliqué.
@@ -90,9 +90,9 @@ OrderForm.prototype.refreshOrderSummary = function()
 OrderForm.prototype.run = function()
 {
 
-  $('#OrderForm option').addEventListener('click', onChangeMeal);
-
-  $('#OrderForm option').trigger('click');
+  // $('#OrderForm option').addEventListener('click', onChangeMeal);
+  //
+  // $('#OrderForm option').trigger('click');
 
  //  Installation d'un gestionnaire d'évènement sur la sélection d'un aliment
  //    *dans la liste déroulante des aliments.
