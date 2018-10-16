@@ -19,6 +19,21 @@ OrderForm.prototype.onAjaxChangeMeal = function(meal)
   this.$form.find('input[name=salePrice]').val(meal.SalePrice);
 };
 
+OrderForm.prototype.onAjaxClickValidateOrder = function(result)
+{
+    var orderId;
+
+    // Désérialisation du résulat en JSON contenant le numéro de commande.
+    orderId = JSON.parse(result);
+    
+    // Redirection HTTP vers la page de demande de paiement de la commande.
+    window.location.assign
+    (
+        getRequestUrl() + '/order/payment?id=' + orderId
+    );
+};
+    
+
 OrderForm.prototype.onAjaxRefreshOrderSummary = function(basketViewHtml)
 {
   //Insertion du contenu du panier (la vue en PHP) dans le document HTML.
@@ -73,6 +88,82 @@ OrderForm.prototype.onClickRemoveBasketItem = function(event)
   //
     event.preventDefault();
 };
+
+OrderForm.prototype.onClickValidateOrder = function()
+{
+    var formFields;
+
+    
+    //  Préparation d'une requête HTTP POST, construction d'un objet représentant
+    // les données de formulaire.
+     
+    // Ainsi form.basketItems donnera du côté du serveur en PHP $formFields['basketItems']
+    formFields =
+    {
+        basketItems : this.basketSession.items
+    };
+     
+    // Exécution d'une requête HTTP POST AJAJ (Asynchronous JavaScript And JSON)
+    // pour valider la commande et procéder au paiement.
+     
+    $.post
+    (
+    getRequestUrl() + '/order/validation', //URL de destination
+    formFields, //Données HTTP POST
+    this.onAjaxClickValidateOrder.bind(this)//Aur retour de la réponse HTTP
+    );
+     
+};
+    
+    
+OrderForm.prototype.onSubmitForm = function(event)
+{
+    
+    /*  Le formulaire doit être validé par la classe FormValidator.
+     *
+     * Quand cette classe s'exécute elle enregistre combien d'erreurs de validation elle
+     * a trouvé dans un attribut HTML data-validation-error-count de la balise <form>
+     * (voir le code dans la méthode onSubmitForm() de la classe FormValidator).
+     *
+     * Si au moins une erreur est trouvée on ne veut surtout pas continuer !
+     if(......){
+     
+     On ne fait rien
+     
+     }
+     
+      Ajout de l'article dans le panier (
+      
+      		Valeur sélectionnée dans la liste déroulante des produits alimentaires
+     
+     		Nom sélectionné dans la liste déroulante des produits alimentaires
+            
+            Saisie de la quantité par l'utilisateur
+            
+            Champ de formulaire caché contenant le prix
+            
+      );
+    
+    Mise à jour du récapitulatif de la commande.
+    
+    
+    
+    
+    Réinitialisation de l'ensemble du formulaire à son état de départ,
+     * pour permettre une nouvelle saisie de l'utilisateur.
+     		Réinitialization du formulaire
+            Sélection du premier produit alimentaire
+            Cache les messages d'erreurs
+            
+            
+    Par défaut les navigateurs ont pour comportement d'envoyer le formulaire
+     * en requête HTTP à l'URL indiquée dans l'attribut action des balises <form>
+     *
+     * Il faut donc empêcher le comportement par défaut du navigateur.
+    
+    */
+     
+};  
 
 OrderForm.prototype.refreshOrderSummary = function()
 {
