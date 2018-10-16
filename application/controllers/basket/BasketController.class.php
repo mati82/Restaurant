@@ -13,15 +13,10 @@ class BasketController
     }
     else
     {
-      if(BasketSession.isEmpty() == true)
+      if(array_key_exists('basketItem', $formFields) == false)
       {
-        //apparition version panier plein
+        $formFields['basketItem'] = [];
       }
-      else
-      {
-        //apparition message panier vide
-      }
-      //s'il n'y a as de panier, il faut en créer un même si il est vide
     }
 
     return [
