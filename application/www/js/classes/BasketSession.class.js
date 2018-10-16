@@ -25,7 +25,7 @@ BasketSession.prototype.add = function(mealId, name, quantity, salePrice)
       {
         this.items.push({
             mealId : mealId,
-            name : name;
+            name : name,
             quantity : quantity,
             salePrice : salePrice
         });

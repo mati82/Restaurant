@@ -1,4 +1,9 @@
 <table>
+  <?php if(): ?>
+  <tr>
+    <td>Votre panier est vide</td>
+  </tr>
+<?php else:?>
   <thead>
     <tr>
       <th>Quantité</th>
@@ -18,4 +23,5 @@
     </tr>
   <?php endforeach ?>
   </tbody>
+<?php endif ?>
 </table>
