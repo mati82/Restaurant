@@ -22,7 +22,7 @@ function runFormValidation()
 
 
 
-function runOrderForm( )
+function runOrderForm()
 {
     var orderForm;
     var orderStep;
@@ -46,14 +46,19 @@ function runOrderForm( )
 // CODE PRINCIPAL                                                                      //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-$(function(){
+$(function()
+{
 
 	// Effet spécial sur la boite de notifications (le flash bag).
-
+    $('#notice').fadeOut('slow').delay('2500');
 	// Exécution de la validation de formulaire si besoin.
+    runFormValidation();
+    // Exécution de la gestion du processus de commande si besoin.
+    if(typeof OrderForm = 'undefined')
+    {
+        runOrderForm();
+    }
 
-   // Exécution de la gestion du processus de commande si besoin.
 
-
-
-});
+}
+);
