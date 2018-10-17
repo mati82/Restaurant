@@ -8,21 +8,24 @@ function runFormValidation(){
     var $form;
     var formValidator;
 
-    $form = $(form:no([data-no-validation=true]));
-    
+    $form = $('form:no([data-no-validation=true])');
+    //
     // // Si il y a un formulaire à valider sur la page actuelle ?
+    if($form.length == 1)
+    {
     // 	Execution de la validation du form
-
-	// }
+    formValidator = new FormValidator($form);
+    formValidator.run();
+    }
 }
 
 
 
-function runOrderForm(){
+function runOrderForm( ){
     var orderForm;
     var orderStep;
 
-    // orderForm =
+    orderForm = new OrderForm();
     //
     //  // A quelle étape de la commande sommes-nous ?
     //
