@@ -13,15 +13,26 @@ class BasketController
     }
     else
     {
-      if(array_key_exists('basketItem', $formFields) == false)
+      if(array_key_exists('basketItems', $formFields) == false)
       {
-        $formFields['basketItem'] = [];
+        $formFields['basketItems'] = [];
       }
     }
 
-    return [
-      "basketItems" => $formFields["basketItem"],
-      "_raw_template" = true
+    return[
+      "_raw_template" => true,
+      "basketItems" => $formFields["basketItems"]
     ];
+
   }
+
+  public function httpPostMethod(Http $http, array $formFields)
+  {
+    $userSession = new UserSession();
+    if ($userSession->isAuthenticated() == false)
+    {
+      $http->redirectTo('/user/Login');
+    }
+  }
+
 }

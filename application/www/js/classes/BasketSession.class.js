@@ -1,7 +1,7 @@
 var BasketSession = function()
 {
   this.items = null;
-  this.items.load();
+  this.load();
 	// Charger le contenue du panier et l'instencier à zéro
 };
 
@@ -24,7 +24,7 @@ BasketSession.prototype.add = function(mealId, name, quantity, salePrice)
         return;
         }
     }
-    
+
     // L'aliment spécifié n'a pas été trouvé, ajout au panier.
     this.items.push
     (
@@ -35,7 +35,7 @@ BasketSession.prototype.add = function(mealId, name, quantity, salePrice)
         salePrice : salePrice
     }
     );
-        
+
     this.save();
 };
 
@@ -67,7 +67,7 @@ BasketSession.prototype.load = function()
 BasketSession.prototype.remove = function(mealId)
 {
     var index;
-    
+
     // Recherche de l'aliment spécifié.
     for(index = 0; index < this.items.lenght; index++)
     {

@@ -1,5 +1,5 @@
 <table class="generic-table">
-
+  <?php if(empty($basketItems) == true): ?>
   <tr>
     <td>Votre panier est vide</td>
   </tr>
@@ -23,4 +23,5 @@
     </tr>
   <?php endforeach ?>
   </tbody>
+  <?php endif ?>
 </table>
