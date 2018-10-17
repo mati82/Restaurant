@@ -1,9 +1,9 @@
 <table class="generic-table">
-  <?php if(BasketSession.isEmpty() == true): ?>
+
   <tr>
     <td>Votre panier est vide</td>
   </tr>
-<?php else:?>
+  <?php else:?>
   <thead>
     <tr>
       <th>Quantité</th>
@@ -23,5 +23,4 @@
     </tr>
   <?php endforeach ?>
   </tbody>
-<?php endif ?>
 </table>

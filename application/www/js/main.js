@@ -38,7 +38,7 @@ function runOrderForm()
         break;
     case 'success':
         orderForm.success(); //Succés du paiement
-        break;  
+        break;
     }
 }
 
@@ -50,11 +50,11 @@ $(function()
 {
 
 	// Effet spécial sur la boite de notifications (le flash bag).
-    $('#notice').fadeOut('slow').delay('2500');
+    $('#notice').delay('2500').fadeOut('slow');
 	// Exécution de la validation de formulaire si besoin.
-    runFormValidation();
+  runFormValidation();
     // Exécution de la gestion du processus de commande si besoin.
-    if(typeof OrderForm = 'undefined')
+    if(typeof OrderForm != 'undefined')
     {
         runOrderForm();
     }
