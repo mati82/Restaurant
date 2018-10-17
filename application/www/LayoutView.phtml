@@ -40,7 +40,7 @@
 
       <a type="input" href="<?= $requestUrl ?>/Booking" class="button button-primary">Réserver</a>
       <a type="input" href="<?= $requestUrl ?>/Order" class="button button-primary">Commander</a>
-      <div>Bonjour <?= $userSession->getFullName() ?></div>
+      <div class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong></div>
       <a type="input" href="<?= $requestUrl ?>/user/Logout" class="button button-primary">Déconnexion</a>
 
     <?php else: ?>

@@ -26,13 +26,12 @@ class OrderModel
     // intialialisation du montant total HT
     $TotalAmount = 0;
     // insertion des lignes de la commande
-    foreach{
-      totalAmount += $basketItems['quantity'] * $basketItems['salePrice']
+    foreach($basketItems as $basketItem){
+      $totalAmount += $basketItem['quantity'] * $basketItem['salePrice']
       // Ajout du montant HT de la ligne du panier au montant tota HT
-      $database->executeSql($sqlOrderLine, [$sqlOrder, $basketItems['Meal_Id'], $basketItems['QuantityOrdered'], $basketItems['SalePrice']]);
+      // Insertion d'une ligne de la commande dans la base de données
+      $database->executeSql($sqlOrderLine, [$sqlOrder, $basketItem['Meal_Id'], $basketItem['QuantityOrdered'], $basketItem['SalePrice']]);
     }
-
-    // Insertion d'une ligne de la commande dans la base de données
 
     // Mise à jour de la commande dans la base de données, avaecd le montants
 

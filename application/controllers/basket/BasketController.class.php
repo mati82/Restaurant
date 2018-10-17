@@ -20,7 +20,8 @@ class BasketController
     }
 
     return [
-      // Attention il ne faut pas charger le template voir ou chercher _raw_template dans la librairie + les Items du basket
+      "basketItems" => $formFields["basketItem"],
+      "_raw_template" = true
     ];
   }
 }

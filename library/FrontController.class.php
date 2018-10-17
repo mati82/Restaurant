@@ -41,7 +41,7 @@ class FrontController
             /** @var InterceptingFilter $filter */
             $filter = new $filterName();
 
-            if ($filter instanceof InterceptingFilter)
+            if ($filter instanceof InterceptingFilter) // si $filter appartient à l'objet InterceptingFilter
             {
                 // Merge intercepting filters variables with the view variables.
                 $this->viewData['variables'] = array_merge
