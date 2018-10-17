@@ -34,7 +34,8 @@ class OrderModel
     }
 
     // Mise à jour de la commande dans la base de données, avaecd le montants
-
+    $sqlUpdate = 'UPDATE order SET TotalAmount= ?';
     // renvoyer l'id de l'order1
+    return $database->executeSql($sqlUpdate, $totalAmount);
   }
 }
