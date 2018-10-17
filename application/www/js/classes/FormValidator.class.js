@@ -212,4 +212,3 @@ FormValidator.prototype.run = function()
         this.$errorMessage.fadeIn('slow');
     }
 };
-
