@@ -4,7 +4,8 @@
 // FONCTIONS                                                                           //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-function runFormValidation(){
+function runFormValidation()
+{
     var $form;
     var formValidator;
 
@@ -21,23 +22,24 @@ function runFormValidation(){
 
 
 
-function runOrderForm( ){
+function runOrderForm( )
+{
     var orderForm;
     var orderStep;
 
     orderForm = new OrderForm();
-    //
+    orderStep = $('[data-order-step]').data('order-step');
     //  // A quelle étape de la commande sommes-nous ?
     //
-    //  switch(.....){
-    //
-    //  commande en cours
-    //
-    //  Succés du paiement
-    //
-    //
-     // }
-
+    switch(orderStep)
+    {
+    case 'run':  //commande en cours
+        orderForm.run();
+        break;
+    case 'success':
+        orderForm.success(); //Succés du paiement
+        break;  
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
