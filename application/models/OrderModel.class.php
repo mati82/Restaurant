@@ -21,8 +21,13 @@ class OrderModel
   {
     // requete sql insertion de la commande dans la base de données
     $database = new Database();
-    $sqlOrder = 'INSERT INTO order (User_Id, CreationTimeStamp, TaxRate) VALUES (?, NOW(), 20)';
-    $sqlOrderLine = 'INSERT INTO orderline (Order_Id, Meal_Id, QuantityOrdered, PriceEach) VALUES (?, ?, ?, ?)';
+    $sqlOrder = $database->executeSql(
+      'INSERT INTO order (User_Id, CreationTimeStamp, TaxRate)
+      VALUES (?, NOW(), 20), [$user])';
+
+    $sqlOrderLine =
+    'INSERT INTO orderline (Order_Id, Meal_Id, QuantityOrdered, PriceEach)
+    VALUES (?, ?, ?, ?)';
     // intialialisation du montant total HT
     $TotalAmount = 0;
     // insertion des lignes de la commande
@@ -34,8 +39,13 @@ class OrderModel
     }
 
     // Mise à jour de la commande dans la base de données, avaecd le montants
-    $sqlUpdate = 'UPDATE order SET TotalAmount= ?';
+    $sqlUpdate =
+    'UPDATE order
+    SET completeTimeStamp = NOW(), TotalAmount = ?, TaxAmount = ?*TaxRate/100
+    WHERE Id = ?';
     // renvoyer l'id de l'order1
-    return $database->executeSql($sqlUpdate, $totalAmount);
+    $database->executeSql($sqlUpdate, [$TotalAmount, $TotalAmount, $sqlOrder]);
+
+    return $sqlOrder;
   }
 }
