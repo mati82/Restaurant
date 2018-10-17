@@ -13,13 +13,13 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($basketLists as $basketList): ?>
+    <?php foreach ($basketItems as $basketItem): ?>
     <tr>
-      <td><?= $basketList['quantityOrder'] ?></td>
-      <td><?= $basketList['name'] ?></td>
-      <td><?= $basketList['priceEach'] ?></td>
-      <td><?= $basketList['priceEach'] * $basketList['quantityOrder'] ?></td>
-      <td><i data-id="<?= $basketList['mealId'] ?>" class="fas fa-trash-alt remove-order"></i></td>
+      <td><?= $basketItem['quantityOrder'] ?></td>
+      <td><?= $basketItem['name'] ?></td>
+      <td><?= $basketItem['priceEach'] ?></td>
+      <td><?= $basketItem['priceEach'] * $basketItem['quantityOrder'] ?></td>
+      <td><i data-id="<?= $basketItem['mealId'] ?>" class="fas fa-trash-alt remove-order"></i></td>
     </tr>
   <?php endforeach ?>
   </tbody>
